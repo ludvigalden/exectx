@@ -31,7 +31,7 @@
 	],
 	"main": "dist/exectx.cjs.js",
 	"module": "dist/exectx.esm.js",
-	"typings": "dist/index.d.ts",
+	"typings": "dist/declarations/index.d.ts",
 	"files": [
 		"dist",
 		"Context",
