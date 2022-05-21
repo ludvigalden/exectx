@@ -1,0 +1,39 @@
+{
+	"baseUrl": ".",
+	"include": [
+		"./**/*"
+	],
+	"exclude": [
+		"node_modules"
+	],
+	"types": [
+		"jest",
+		"invariant",
+		"eslint",
+		"estree",
+		"webpack"
+	],
+	"compilerOptions": {
+		"module": "esnext",
+		"moduleResolution": "node",
+		"target": "es2015",
+		"lib": [
+			"esnext"
+		],
+		"rootDir": "packages",
+		"noEmit": true,
+		"strict": true,
+		"allowJs": false,
+		"checkJs": false,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"strictNullChecks": false,
+		"noErrorTruncation": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitThis": true,
+		"forceConsistentCasingInFileNames": true,
+		"allowSyntheticDefaultImports": true,
+		"isolatedModules": true
+	}
+}
