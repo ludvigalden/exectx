@@ -7,19 +7,7 @@
 
 ---
 
-There are cases where you need to force an update while unsure whether the component is mounted. `useSafeForceUpdate` is a safe form of force updating a component. The basic quality is to not perform any updates when the component is not unmounted. In addition, it also allows for queueing a update for when the component *has* been mounted, which is simply canceled by calling the function before the component has been mounted.
-
-```typescript
-import { useSafeForceUpdate } from "exectx";
-
-const forceUpdate = useSafeForceUpdate()
-
-React.useMemo(() => {
-  setTimeout(() => {
-    forceUpdate() // React will not ever complain about this!
-  }, [Math.random() * 1000])
-}, [])
-```
+This is a monorepo that currently only hosts a single package, namely `exectx`. Please see the [README for `exectx`](packages/exectx) for more information.
 
 ## Authors
 
