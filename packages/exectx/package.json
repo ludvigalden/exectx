@@ -10,6 +10,9 @@
   "peerDependencies": {
     "@babel/runtime": "^7.18.0"
   },
+  "devDependencies": {
+    "@babel/runtime": "^7.18.0"
+  },
   "author": {
     "name": "Ludvig Aldén",
     "email": "ludvig@tifum.com",
@@ -48,8 +51,5 @@
       "executionResolve.ts",
       "ExecutionSlot.ts"
     ]
-  },
-  "devDependencies": {
-    "@babel/runtime": "^7.18.0"
   }
 }
