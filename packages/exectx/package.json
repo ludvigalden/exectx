@@ -1,56 +1,55 @@
 {
-	"name": "exectx",
-	"sideEffects": false,
-	"version": "0.0.1",
-	"description": "Cancelable contexts and executions",
-	"license": "MIT",
-	"dependencies": {
-		"is-promise": "^4.0.0"
-	},
-	"peerDependencies": {
-		"@babel/runtime": "^7.18.0"
-	},
-	"author": {
-		"name": "Ludvig Aldén",
-		"email": "ludvig@tifum.com",
-		"url": "https://github.com/ludvigalden"
-	},
-	"contributors": [
-		"Ludvig Aldén <ludvig@tifum.com> (https://github.com/ludvigalden)"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/ludvigalden/exectx.git",
-		"directory": "packages/exectx"
-	},
-	"keywords": [
-		"execution",
-		"context",
-		"cancelable",
-		"promise"
-	],
-	"main": "dist/exectx.cjs.js",
-	"module": "dist/exectx.esm.js",
-	"typings": "dist/declarations/index.d.ts",
-	"files": [
-		"dist",
-		"Context",
-		"Execution",
-		"executionFunc",
-		"executionResolve",
-		"ExecutionSlot"
-	],
-	"preconstruct": {
-		"entrypoints": [
-			"index.ts",
-			"Context.ts",
-			"Execution.ts",
-			"executionFunc.ts",
-			"executionResolve.ts",
-			"ExecutionSlot.ts"
-		]
-	},
-	"devDependencies": {
-		"@babel/runtime": "^7.18.0"
-	}
+  "name": "exectx",
+  "sideEffects": false,
+  "version": "0.0.1",
+  "description": "Cancelable contexts and executions",
+  "license": "MIT",
+  "dependencies": {
+    "is-promise": "^4.0.0"
+  },
+  "peerDependencies": {
+    "@babel/runtime": "^7.18.0"
+  },
+  "author": {
+    "name": "Ludvig Aldén",
+    "email": "ludvig@tifum.com",
+    "url": "https://github.com/ludvigalden"
+  },
+  "contributors": [
+    "Ludvig Aldén <ludvig@tifum.com> (https://github.com/ludvigalden)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ludvigalden/exectx.git",
+    "directory": "packages/exectx"
+  },
+  "keywords": [
+    "execution",
+    "context",
+    "cancelable",
+    "promise"
+  ],
+  "main": "dist/exectx.cjs.js",
+  "module": "dist/exectx.esm.js",
+  "files": [
+    "dist",
+    "Context",
+    "Execution",
+    "executionFunc",
+    "executionResolve",
+    "ExecutionSlot"
+  ],
+  "preconstruct": {
+    "entrypoints": [
+      "index.ts",
+      "Context.ts",
+      "Execution.ts",
+      "executionFunc.ts",
+      "executionResolve.ts",
+      "ExecutionSlot.ts"
+    ]
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.18.0"
+  }
 }
