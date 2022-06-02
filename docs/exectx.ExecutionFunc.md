@@ -28,7 +28,7 @@
 
 #### Defined in
 
-[exectx/src/executionFunc.ts:171](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/executionFunc.ts#L171)
+[exectx/src/executionFunc.ts:167](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionFunc.ts#L167)
 
 ## Table of contents
 
@@ -47,7 +47,7 @@
 
 #### Defined in
 
-[exectx/src/executionFunc.ts:174](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/executionFunc.ts#L174)
+[exectx/src/executionFunc.ts:170](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionFunc.ts#L170)
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 #### Defined in
 
-[exectx/src/executionFunc.ts:175](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/executionFunc.ts#L175)
+[exectx/src/executionFunc.ts:171](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionFunc.ts#L171)
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 #### Defined in
 
-[exectx/src/executionFunc.ts:176](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/executionFunc.ts#L176)
+[exectx/src/executionFunc.ts:172](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionFunc.ts#L172)
 
 ___
 
@@ -77,4 +77,4 @@ ___
 
 #### Defined in
 
-[exectx/src/executionFunc.ts:173](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/executionFunc.ts#L173)
+[exectx/src/executionFunc.ts:169](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionFunc.ts#L169)

@@ -2,6 +2,13 @@
 
 [exectx](../wiki/exectx).Execution
 
+An execution is a context-like object that holds information about an execution being canceled.
+It is intended to be used for asynchronous actions that can be canceled at any point in the future.
+An execution can be canceled using the `cancel` method and checked whether canceled using the `canceled` property.
+Additional methods and properties for efficient usage of the `canceled` property are `onCanceled`, `run`, and `promise`.
+
+**`param`** Parent(s) to inherit cancellation state from.
+
 ## Hierarchy
 
 - **`Execution`**
@@ -46,7 +53,7 @@
 
 #### Defined in
 
-[exectx/src/Execution.ts:26](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L26)
+[exectx/src/Execution.ts:17](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L17)
 
 ## Accessors
 
@@ -64,7 +71,7 @@ in order reduce the amount of uneccessary executions that lead to no effect.
 
 #### Defined in
 
-[exectx/src/Execution.ts:183](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L183)
+[exectx/src/Execution.ts:175](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L175)
 
 ___
 
@@ -81,7 +88,7 @@ If the execution is already canceled, a resolved promise is returned.
 
 #### Defined in
 
-[exectx/src/Execution.ts:172](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L172)
+[exectx/src/Execution.ts:164](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L164)
 
 ## Methods
 
@@ -98,7 +105,7 @@ Should only be used if the execution was constructed by you, or if you know what
 
 #### Defined in
 
-[exectx/src/Execution.ts:45](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L45)
+[exectx/src/Execution.ts:37](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L37)
 
 ___
 
@@ -106,6 +113,7 @@ ___
 
 ▸ **nest**(): [`Execution`](../wiki/exectx.Execution)
 
+Nests the execution
 Returns a child execution context that will be canceled whenever its parent is canceled, or when it is canceled itself.
 Its state does not affect the state of its parent.
 
@@ -117,7 +125,7 @@ A child execution.
 
 #### Defined in
 
-[exectx/src/Execution.ts:39](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L39)
+[exectx/src/Execution.ts:31](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L31)
 
 ___
 
@@ -140,7 +148,7 @@ If the execution is already canceled, the passed listener is called synchronousl
 
 #### Defined in
 
-[exectx/src/Execution.ts:62](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L62)
+[exectx/src/Execution.ts:54](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L54)
 
 ___
 
@@ -169,7 +177,7 @@ Every action inherits the value returned from the previous action (unless that v
 
 #### Defined in
 
-[exectx/src/Execution.ts:92](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L92)
+[exectx/src/Execution.ts:84](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L84)
 
 ▸ **run**<`_1`, `_2`\>(`_1`, `_2`): `void` \| `_2` \| `Promise`<`void` \| `_2`\>
 
@@ -193,7 +201,7 @@ Every action inherits the value returned from the previous action (unless that v
 
 #### Defined in
 
-[exectx/src/Execution.ts:93](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L93)
+[exectx/src/Execution.ts:85](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L85)
 
 ▸ **run**<`_1`, `_2`, `_3`\>(`_1`, `_2`, `_3`): `void` \| `_3` \| `Promise`<`void` \| `_3`\>
 
@@ -219,7 +227,7 @@ Every action inherits the value returned from the previous action (unless that v
 
 #### Defined in
 
-[exectx/src/Execution.ts:97](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L97)
+[exectx/src/Execution.ts:89](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L89)
 
 ▸ **run**<`_1`, `_2`, `_3`, `_4`\>(`_1`, `_2`, `_3`, `_4`): `void` \| `_4` \| `Promise`<`void` \| `_4`\>
 
@@ -247,7 +255,7 @@ Every action inherits the value returned from the previous action (unless that v
 
 #### Defined in
 
-[exectx/src/Execution.ts:102](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L102)
+[exectx/src/Execution.ts:94](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L94)
 
 ▸ **run**<`_1`, `_2`, `_3`, `_4`, `_5`\>(`_1`, `_2`, `_3`, `_4`, `_5`): `void` \| `_5` \| `Promise`<`void` \| `_5`\>
 
@@ -277,7 +285,7 @@ Every action inherits the value returned from the previous action (unless that v
 
 #### Defined in
 
-[exectx/src/Execution.ts:108](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L108)
+[exectx/src/Execution.ts:100](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L100)
 
 ___
 
@@ -291,7 +299,7 @@ ___
 
 #### Defined in
 
-[exectx/src/Execution.ts:215](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L215)
+[exectx/src/Execution.ts:207](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L207)
 
 ___
 
@@ -312,7 +320,7 @@ ___
 
 #### Defined in
 
-[exectx/src/Execution.ts:231](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L231)
+[exectx/src/Execution.ts:223](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L223)
 
 ___
 
@@ -339,7 +347,7 @@ ___
 
 #### Defined in
 
-[exectx/src/Execution.ts:187](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L187)
+[exectx/src/Execution.ts:179](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L179)
 
 ___
 
@@ -365,4 +373,4 @@ ___
 
 #### Defined in
 
-[exectx/src/Execution.ts:219](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L219)
+[exectx/src/Execution.ts:211](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L211)

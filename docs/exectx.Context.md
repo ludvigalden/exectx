@@ -2,6 +2,13 @@
 
 [exectx](../wiki/exectx).Context
 
+An execution that allows for storing values and inheriting values and cancellation
+from parent contexts or executions.
+
+**`param`** Values that are specific to the context.
+
+**`param`** Parent(s) to inherit values and/or cancellation state from.
+
 ## Type parameters
 
 | Name | Type |
@@ -13,6 +20,8 @@
 - [`Execution`](../wiki/exectx.Execution)
 
   ↳ **`Context`**
+
+  ↳↳ [`ReactContext`](../wiki/exectx-react.ReactContext)
 
 ## Table of contents
 
@@ -66,7 +75,7 @@
 
 #### Defined in
 
-[exectx/src/Context.ts:20](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Context.ts#L20)
+[exectx/src/Context.ts:14](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L14)
 
 ## Accessors
 
@@ -88,7 +97,7 @@ Execution.canceled
 
 #### Defined in
 
-[exectx/src/Execution.ts:183](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L183)
+[exectx/src/Execution.ts:175](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L175)
 
 ___
 
@@ -109,7 +118,7 @@ Execution.promiseCanceled
 
 #### Defined in
 
-[exectx/src/Execution.ts:172](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L172)
+[exectx/src/Execution.ts:164](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L164)
 
 ## Methods
 
@@ -130,7 +139,7 @@ Should only be used if the execution was constructed by you, or if you know what
 
 #### Defined in
 
-[exectx/src/Execution.ts:45](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L45)
+[exectx/src/Execution.ts:37](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L37)
 
 ___
 
@@ -160,7 +169,7 @@ ___
 
 #### Defined in
 
-[exectx/src/Context.ts:49](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Context.ts#L49)
+[exectx/src/Context.ts:43](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L43)
 
 ___
 
@@ -186,7 +195,7 @@ ___
 
 #### Defined in
 
-[exectx/src/Context.ts:63](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Context.ts#L63)
+[exectx/src/Context.ts:57](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L57)
 
 ___
 
@@ -213,7 +222,7 @@ Returns a child context that inherits the cancellation state and values of this 
 
 #### Defined in
 
-[exectx/src/Context.ts:70](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Context.ts#L70)
+[exectx/src/Context.ts:64](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L64)
 
 ▸ **nest**<`CV`\>(`values?`, ...`otherParents`): [`Context`](../wiki/exectx.Context)<`NestedContextValues`<`V`, `CV`\>\>
 
@@ -240,7 +249,7 @@ Execution.nest
 
 #### Defined in
 
-[exectx/src/Context.ts:71](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Context.ts#L71)
+[exectx/src/Context.ts:65](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L65)
 
 ___
 
@@ -254,7 +263,7 @@ ___
 
 #### Defined in
 
-[exectx/src/Context.ts:87](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Context.ts#L87)
+[exectx/src/Context.ts:81](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L81)
 
 ___
 
@@ -281,7 +290,7 @@ If the execution is already canceled, the passed listener is called synchronousl
 
 #### Defined in
 
-[exectx/src/Execution.ts:62](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L62)
+[exectx/src/Execution.ts:54](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L54)
 
 ___
 
@@ -314,7 +323,7 @@ Every action inherits the value returned from the previous action (unless that v
 
 #### Defined in
 
-[exectx/src/Execution.ts:92](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L92)
+[exectx/src/Execution.ts:84](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L84)
 
 ▸ **run**<`_1`, `_2`\>(`_1`, `_2`): `void` \| `_2` \| `Promise`<`void` \| `_2`\>
 
@@ -342,7 +351,7 @@ Every action inherits the value returned from the previous action (unless that v
 
 #### Defined in
 
-[exectx/src/Execution.ts:93](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L93)
+[exectx/src/Execution.ts:85](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L85)
 
 ▸ **run**<`_1`, `_2`, `_3`\>(`_1`, `_2`, `_3`): `void` \| `_3` \| `Promise`<`void` \| `_3`\>
 
@@ -372,7 +381,7 @@ Every action inherits the value returned from the previous action (unless that v
 
 #### Defined in
 
-[exectx/src/Execution.ts:97](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L97)
+[exectx/src/Execution.ts:89](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L89)
 
 ▸ **run**<`_1`, `_2`, `_3`, `_4`\>(`_1`, `_2`, `_3`, `_4`): `void` \| `_4` \| `Promise`<`void` \| `_4`\>
 
@@ -404,7 +413,7 @@ Every action inherits the value returned from the previous action (unless that v
 
 #### Defined in
 
-[exectx/src/Execution.ts:102](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L102)
+[exectx/src/Execution.ts:94](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L94)
 
 ▸ **run**<`_1`, `_2`, `_3`, `_4`, `_5`\>(`_1`, `_2`, `_3`, `_4`, `_5`): `void` \| `_5` \| `Promise`<`void` \| `_5`\>
 
@@ -438,7 +447,7 @@ Every action inherits the value returned from the previous action (unless that v
 
 #### Defined in
 
-[exectx/src/Execution.ts:108](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L108)
+[exectx/src/Execution.ts:100](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L100)
 
 ___
 
@@ -469,7 +478,7 @@ Context.
 
 #### Defined in
 
-[exectx/src/Context.ts:39](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Context.ts#L39)
+[exectx/src/Context.ts:33](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L33)
 
 ___
 
@@ -487,7 +496,7 @@ ___
 
 #### Defined in
 
-[exectx/src/Execution.ts:215](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L215)
+[exectx/src/Execution.ts:207](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L207)
 
 ___
 
@@ -512,7 +521,7 @@ ___
 
 #### Defined in
 
-[exectx/src/Execution.ts:231](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L231)
+[exectx/src/Execution.ts:223](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L223)
 
 ___
 
@@ -544,7 +553,7 @@ ___
 
 #### Defined in
 
-[exectx/src/Context.ts:122](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Context.ts#L122)
+[exectx/src/Context.ts:116](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L116)
 
 ▸ `Static` **nest**<`T`, `PT`\>(`options`): `T`
 
@@ -571,7 +580,7 @@ Execution.nest
 
 #### Defined in
 
-[exectx/src/Context.ts:127](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Context.ts#L127)
+[exectx/src/Context.ts:121](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L121)
 
 ___
 
@@ -601,7 +610,7 @@ ___
 
 #### Defined in
 
-[exectx/src/Execution.ts:219](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Execution.ts#L219)
+[exectx/src/Execution.ts:211](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L211)
 
 ___
 
@@ -621,4 +630,4 @@ ___
 
 #### Defined in
 
-[exectx/src/Context.ts:182](https://github.com/ludvigalden/exectx/blob/0f41d8f/packages/exectx/src/Context.ts#L182)
+[exectx/src/Context.ts:176](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L176)
