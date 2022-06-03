@@ -16,6 +16,9 @@
 
 ▸ **ExecutionFunc**(...`params`): `RT`
 
+A function that accepts an execution as a final optional parameter, and have additional properties
+defined for internal use by [`executionFunc`](../wiki/exectx#executionfunc).
+
 #### Parameters
 
 | Name | Type |
@@ -28,7 +31,7 @@
 
 #### Defined in
 
-[exectx/src/executionFunc.ts:167](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionFunc.ts#L167)
+[exectx/src/executionFunc.ts:182](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionFunc.ts#L182)
 
 ## Table of contents
 
@@ -45,9 +48,11 @@
 
 • `Optional` **\_\_defaultExecution**: `boolean`
 
+Whether most recently used execution was defaulted to.
+
 #### Defined in
 
-[exectx/src/executionFunc.ts:170](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionFunc.ts#L170)
+[exectx/src/executionFunc.ts:187](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionFunc.ts#L187)
 
 ___
 
@@ -55,9 +60,11 @@ ___
 
 • `Optional` **\_\_params**: `A`
 
+The most recently used params.
+
 #### Defined in
 
-[exectx/src/executionFunc.ts:171](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionFunc.ts#L171)
+[exectx/src/executionFunc.ts:189](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionFunc.ts#L189)
 
 ___
 
@@ -65,9 +72,11 @@ ___
 
 • `Optional` **\_\_returned**: `RT`
 
+The most recently returned value.
+
 #### Defined in
 
-[exectx/src/executionFunc.ts:172](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionFunc.ts#L172)
+[exectx/src/executionFunc.ts:191](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionFunc.ts#L191)
 
 ___
 
@@ -75,6 +84,8 @@ ___
 
 • `Optional` **\_execution**: `E`
 
+The most recently used execution.
+
 #### Defined in
 
-[exectx/src/executionFunc.ts:169](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionFunc.ts#L169)
+[exectx/src/executionFunc.ts:185](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionFunc.ts#L185)

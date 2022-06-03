@@ -17,25 +17,30 @@
 
 ▸ **axiosExecutionRequest**<`D`\>(`config`): `AxiosPromise`<`D`\>
 
+Makes a request using {@linkcode axios.request} and attaches the specified execution, which
+will cancel the request whenever the execution is canceled.
+
 #### Type parameters
 
-| Name | Type |
-| :------ | :------ |
-| `D` | `any` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `D` | `any` | Requested type of data. |
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `config` | [`AxiosExecutionRequestConfig`](../wiki/exectx-axios.AxiosExecutionRequestConfig)<`D`\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `config` | [`AxiosExecutionRequestConfig`](../wiki/exectx-axios.AxiosExecutionRequestConfig)<`D`\> | Axios request configuration that also accepts an execution. |
 
 #### Returns
 
 `AxiosPromise`<`D`\>
 
+A promise that resolves the axios response.
+
 #### Defined in
 
-exectx-axios/src/axiosExecutionRequest.ts:6
+exectx-axios/src/axiosExecutionRequest.ts:14
 
 ___
 
@@ -43,16 +48,20 @@ ___
 
 ▸ **createAxiosCancelTokenSource**(`execution?`): `CancelTokenSource`
 
+Creates a {@linkcode CancelTokenSource} based on an execution for use with {@linkcode axios}.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `execution?` | [`Execution`](../wiki/exectx.Execution) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `execution?` | [`Execution`](../wiki/exectx.Execution) | The execution from which to inherit cancellation state from. |
 
 #### Returns
 
 `CancelTokenSource`
 
+The cancel token to be used with {@linkcode axios}.
+
 #### Defined in
 
-exectx-axios/src/createAxiosCancelTokenSource.ts:4
+exectx-axios/src/createAxiosCancelTokenSource.ts:10

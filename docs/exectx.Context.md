@@ -2,12 +2,16 @@
 
 [exectx](../wiki/exectx).Context
 
-An execution that allows for storing values and inheriting values and cancellation
-from parent contexts or executions.
+An [`Execution`](../wiki/exectx.Execution) that allows for storing values and inheriting values and cancellation state
+from parent contexts and/or executions.
 
 **`param`** Values that are specific to the context.
 
 **`param`** Parent(s) to inherit values and/or cancellation state from.
+
+**`typicalname`** context
+
+**`classdesc`** A cancelable that holds mutable values and can inherit from other contexts and executions.
 
 ## Type parameters
 
@@ -37,17 +41,15 @@ from parent contexts or executions.
 ### Methods
 
 - [cancel](../wiki/exectx.Context#cancel)
+- [delete](../wiki/exectx.Context#delete)
 - [get](../wiki/exectx.Context#get)
+- [getAll](../wiki/exectx.Context#getall)
 - [has](../wiki/exectx.Context#has)
 - [nest](../wiki/exectx.Context#nest)
 - [nestExecution](../wiki/exectx.Context#nestexecution)
 - [onCanceled](../wiki/exectx.Context#oncanceled)
-- [run](../wiki/exectx.Context#run)
 - [set](../wiki/exectx.Context#set)
-- [generateKey](../wiki/exectx.Context#generatekey)
 - [isEqual](../wiki/exectx.Context#isequal)
-- [nest](../wiki/exectx.Context#nest-1)
-- [parseParentArg](../wiki/exectx.Context#parseparentarg)
 - [stringifyValues](../wiki/exectx.Context#stringifyvalues)
 
 ## Constructors
@@ -67,7 +69,7 @@ from parent contexts or executions.
 | Name | Type |
 | :------ | :------ |
 | `values?` | `V` |
-| `parent?` | `ContextParentArg`<`V`\> |
+| `parent?` | [`ContextParentArg`](../wiki/exectx#contextparentarg)<`V`\> |
 
 #### Overrides
 
@@ -75,7 +77,7 @@ from parent contexts or executions.
 
 #### Defined in
 
-[exectx/src/Context.ts:14](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L14)
+[exectx/src/Context.ts:21](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L21)
 
 ## Accessors
 
@@ -91,13 +93,15 @@ in order reduce the amount of uneccessary executions that lead to no effect.
 
 `boolean`
 
+Whether the execution has been canceled.
+
 #### Inherited from
 
 Execution.canceled
 
 #### Defined in
 
-[exectx/src/Execution.ts:175](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L175)
+[exectx/src/Execution.ts:120](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L120)
 
 ___
 
@@ -105,8 +109,7 @@ ___
 
 • `get` **promiseCanceled**(): `Promise`<`void`\>
 
-Returns a promise that resolves once the execution is canceled.
-If the execution is already canceled, a resolved promise is returned.
+A promise that resolves whenever the execution is canceled, or if the execution is already canceled, a resolved promise.
 
 #### Returns
 
@@ -118,7 +121,7 @@ Execution.promiseCanceled
 
 #### Defined in
 
-[exectx/src/Execution.ts:164](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L164)
+[exectx/src/Execution.ts:105](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L105)
 
 ## Methods
 
@@ -139,7 +142,35 @@ Should only be used if the execution was constructed by you, or if you know what
 
 #### Defined in
 
-[exectx/src/Execution.ts:37](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L37)
+[exectx/src/Execution.ts:41](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L41)
+
+___
+
+### delete
+
+▸ **delete**<`K`\>(`key`): `void`
+
+**`description`** Deletes a value of the context.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `K` | extends `string` \| `number` \| `symbol` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `key` | `K` | The key of the value to delete. When deleted, the value will be inherited from any parent(s). |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[exectx/src/Context.ts:49](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L49)
 
 ___
 
@@ -147,9 +178,7 @@ ___
 
 ▸ **get**<`K`\>(`key`): `V`[`K`]
 
-**`method`** get
-
-**`description`** Get a value
+**`description`** Retrieves a value of the context.
 
 #### Type parameters
 
@@ -159,17 +188,49 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `key` | `K` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `key` | `K` | The key of the value to retrieve. |
 
 #### Returns
 
 `V`[`K`]
 
+The value defined in the context or in any of its parent contexts.
+
 #### Defined in
 
-[exectx/src/Context.ts:43](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L43)
+[exectx/src/Context.ts:58](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L58)
+
+___
+
+### getAll
+
+▸ **getAll**<`K`\>(`key`): `V`[`K`][]
+
+**`description`** Retrieves values defined in the context and in any of its parents.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `K` | extends `string` \| `number` \| `symbol` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `key` | `K` | The key of the value to retrieve. |
+
+#### Returns
+
+`V`[`K`][]
+
+The values of a specific key among this instance and its parents, wherever it is found to be defined.
+
+#### Defined in
+
+[exectx/src/Context.ts:77](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L77)
 
 ___
 
@@ -177,6 +238,8 @@ ___
 
 ▸ **has**<`K`\>(`key`): `boolean`
 
+**`description`** Whether a value is defined in the context or in any of its parent contexts.
+
 #### Type parameters
 
 | Name | Type |
@@ -185,36 +248,40 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `key` | `K` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `key` | `K` | The key of the value to check whether it is defined. |
 
 #### Returns
 
 `boolean`
 
+Whether a value is defined in the context or in any of its parent contexts.
+
 #### Defined in
 
-[exectx/src/Context.ts:57](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L57)
+[exectx/src/Context.ts:98](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L98)
 
 ___
 
 ### nest
 
-▸ **nest**(`values?`, ...`otherParents`): [`Context`](../wiki/exectx.Context)<`V`\>
+▸ **nest**(`values?`): [`Context`](../wiki/exectx.Context)<`V`\>
 
-Returns a child context that inherits the cancellation state and values of this context (as well as any additional parents specified).
+**`description`** Nests the context.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `values?` | `Partial`<`V`\> |
-| `...otherParents` | `ContextParent`<`V`\>[] |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `values?` | `Partial`<`V`\> | Values to attach to the nested context. |
 
 #### Returns
 
 [`Context`](../wiki/exectx.Context)<`V`\>
+
+A child context that inherits the cancellation state and values of this context
+(as well as any additional parents specified.)
 
 #### Overrides
 
@@ -222,9 +289,11 @@ Returns a child context that inherits the cancellation state and values of this 
 
 #### Defined in
 
-[exectx/src/Context.ts:64](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L64)
+[exectx/src/Context.ts:110](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L110)
 
-▸ **nest**<`CV`\>(`values?`, ...`otherParents`): [`Context`](../wiki/exectx.Context)<`NestedContextValues`<`V`, `CV`\>\>
+▸ **nest**<`CV`\>(`values?`): [`Context`](../wiki/exectx.Context)<[`NestedContextValues`](../wiki/exectx#nestedcontextvalues)<`V`, `CV`\>\>
+
+**`description`** Nests the context.
 
 #### Type parameters
 
@@ -234,14 +303,16 @@ Returns a child context that inherits the cancellation state and values of this 
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `values?` | `CV` |
-| `...otherParents` | `ContextParent`<`CV`\>[] |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `values?` | `CV` | Values to attach to the nested context. |
 
 #### Returns
 
-[`Context`](../wiki/exectx.Context)<`NestedContextValues`<`V`, `CV`\>\>
+[`Context`](../wiki/exectx.Context)<[`NestedContextValues`](../wiki/exectx#nestedcontextvalues)<`V`, `CV`\>\>
+
+A child context that inherits the cancellation state and values of this context
+(as well as any additional parents specified.)
 
 #### Overrides
 
@@ -249,7 +320,7 @@ Execution.nest
 
 #### Defined in
 
-[exectx/src/Context.ts:65](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L65)
+[exectx/src/Context.ts:117](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L117)
 
 ___
 
@@ -257,32 +328,38 @@ ___
 
 ▸ **nestExecution**(): [`Execution`](../wiki/exectx.Execution)
 
+Nests the context to a execution that inherits the cancellation state of the context.
+
 #### Returns
 
 [`Execution`](../wiki/exectx.Execution)
 
+A child execution context that will be canceled whenever its parent is canceled, or when it is canceled itself.
+Its state does not affect the state of its parent.
+
 #### Defined in
 
-[exectx/src/Context.ts:81](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L81)
+[exectx/src/Context.ts:131](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L131)
 
 ___
 
 ### onCanceled
 
-▸ **onCanceled**(`listener`): `ExecutionCanceledUnsubscriber`
+▸ **onCanceled**(`listener`): [`ExecutionCanceledUnsubscriber`](../wiki/exectx#executioncanceledunsubscriber)
 
-Listen to whenever the executions is canceled, and returns a function to stop listening.
-If the execution is already canceled, the passed listener is called synchronously and the returned function does nothing.
+Listens to whenever the execution is canceled.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `listener` | `ExecutionCanceledListener` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `listener` | [`ExecutionCanceledListener`](../wiki/exectx#executioncanceledlistener) | Called wheneer the execution is canceled. If the execution is already canceled, the passed listener is called synchronously and the returned function does nothing. |
 
 #### Returns
 
-`ExecutionCanceledUnsubscriber`
+[`ExecutionCanceledUnsubscriber`](../wiki/exectx#executioncanceledunsubscriber)
+
+Unsubscriber for the listener.
 
 #### Inherited from
 
@@ -290,172 +367,15 @@ If the execution is already canceled, the passed listener is called synchronousl
 
 #### Defined in
 
-[exectx/src/Execution.ts:54](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L54)
-
-___
-
-### run
-
-▸ **run**<`_1`\>(`_1`): `void` \| `_1` \| `Promise`<`void` \| `_1`\>
-
-Run actions for the execution. If any of the actions returns `undefined` or if the execution is canceled, the next action will not be run.
-Every action inherits the value returned from the previous action (unless that value is `undefined`).
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `_1` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `_1` | () => `void` \| `_1` \| `Promise`<`void` \| `_1`\> |
-
-#### Returns
-
-`void` \| `_1` \| `Promise`<`void` \| `_1`\>
-
-#### Inherited from
-
-[Execution](../wiki/exectx.Execution).[run](../wiki/exectx.Execution#run)
-
-#### Defined in
-
-[exectx/src/Execution.ts:84](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L84)
-
-▸ **run**<`_1`, `_2`\>(`_1`, `_2`): `void` \| `_2` \| `Promise`<`void` \| `_2`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `_1` |
-| `_2` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `_1` | () => `void` \| `_1` \| `Promise`<`void` \| `_1`\> |
-| `_2` | (`_1`: `_1`) => `void` \| `_2` \| `Promise`<`void` \| `_2`\> |
-
-#### Returns
-
-`void` \| `_2` \| `Promise`<`void` \| `_2`\>
-
-#### Inherited from
-
-[Execution](../wiki/exectx.Execution).[run](../wiki/exectx.Execution#run)
-
-#### Defined in
-
-[exectx/src/Execution.ts:85](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L85)
-
-▸ **run**<`_1`, `_2`, `_3`\>(`_1`, `_2`, `_3`): `void` \| `_3` \| `Promise`<`void` \| `_3`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `_1` |
-| `_2` |
-| `_3` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `_1` | () => `void` \| `_1` \| `Promise`<`void` \| `_1`\> |
-| `_2` | (`_1`: `_1`) => `void` \| `_2` \| `Promise`<`void` \| `_2`\> |
-| `_3` | (`_2`: `_2`) => `void` \| `_3` \| `Promise`<`void` \| `_3`\> |
-
-#### Returns
-
-`void` \| `_3` \| `Promise`<`void` \| `_3`\>
-
-#### Inherited from
-
-[Execution](../wiki/exectx.Execution).[run](../wiki/exectx.Execution#run)
-
-#### Defined in
-
-[exectx/src/Execution.ts:89](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L89)
-
-▸ **run**<`_1`, `_2`, `_3`, `_4`\>(`_1`, `_2`, `_3`, `_4`): `void` \| `_4` \| `Promise`<`void` \| `_4`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `_1` |
-| `_2` |
-| `_3` |
-| `_4` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `_1` | () => `void` \| `_1` \| `Promise`<`void` \| `_1`\> |
-| `_2` | (`_1`: `_1`) => `void` \| `_2` \| `Promise`<`void` \| `_2`\> |
-| `_3` | (`_2`: `_2`) => `void` \| `_3` \| `Promise`<`void` \| `_3`\> |
-| `_4` | (`_3`: `_3`) => `void` \| `_4` \| `Promise`<`void` \| `_4`\> |
-
-#### Returns
-
-`void` \| `_4` \| `Promise`<`void` \| `_4`\>
-
-#### Inherited from
-
-[Execution](../wiki/exectx.Execution).[run](../wiki/exectx.Execution#run)
-
-#### Defined in
-
-[exectx/src/Execution.ts:94](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L94)
-
-▸ **run**<`_1`, `_2`, `_3`, `_4`, `_5`\>(`_1`, `_2`, `_3`, `_4`, `_5`): `void` \| `_5` \| `Promise`<`void` \| `_5`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `_1` |
-| `_2` |
-| `_3` |
-| `_4` |
-| `_5` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `_1` | () => `void` \| `_1` \| `Promise`<`void` \| `_1`\> |
-| `_2` | (`_1`: `_1`) => `void` \| `_2` \| `Promise`<`void` \| `_2`\> |
-| `_3` | (`_2`: `_2`) => `void` \| `_3` \| `Promise`<`void` \| `_3`\> |
-| `_4` | (`_3`: `_3`) => `void` \| `_4` \| `Promise`<`void` \| `_4`\> |
-| `_5` | (`_4`: `_4`) => `void` \| `_5` \| `Promise`<`void` \| `_5`\> |
-
-#### Returns
-
-`void` \| `_5` \| `Promise`<`void` \| `_5`\>
-
-#### Inherited from
-
-[Execution](../wiki/exectx.Execution).[run](../wiki/exectx.Execution#run)
-
-#### Defined in
-
-[exectx/src/Execution.ts:100](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L100)
+[exectx/src/Execution.ts:63](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L63)
 
 ___
 
 ### set
 
-▸ **set**<`K`\>(`key`, `value`): [`Context`](../wiki/exectx.Context)<`V`\>
+▸ **set**<`K`\>(`key`, `value`): `void`
 
-Set a value of the context.
+Sets a value of the context. It will override any value with the same key of any parent context.
 
 #### Type parameters
 
@@ -465,38 +385,18 @@ Set a value of the context.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `key` | `K` |
-| `value` | `V`[`K`] |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `key` | `K` | The key of the value to set. |
+| `value` | `V`[`K`] | The value to set to the key. |
 
 #### Returns
 
-[`Context`](../wiki/exectx.Context)<`V`\>
-
-Context.
+`void`
 
 #### Defined in
 
-[exectx/src/Context.ts:33](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L33)
-
-___
-
-### generateKey
-
-▸ `Static` **generateKey**(): `number`
-
-#### Returns
-
-`number`
-
-#### Inherited from
-
-[Execution](../wiki/exectx.Execution).[generateKey](../wiki/exectx.Execution#generatekey)
-
-#### Defined in
-
-[exectx/src/Execution.ts:207](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L207)
+[exectx/src/Context.ts:41](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L41)
 
 ___
 
@@ -504,16 +404,20 @@ ___
 
 ▸ `Static` **isEqual**(`a`, `b`): `boolean`
 
+**`description`** Whether two executions are equal to each other.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `a` | [`Execution`](../wiki/exectx.Execution) |
-| `b` | [`Execution`](../wiki/exectx.Execution) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `a` | [`Execution`](../wiki/exectx.Execution) | Execution A. |
+| `b` | [`Execution`](../wiki/exectx.Execution) | Execution B. |
 
 #### Returns
 
 `boolean`
+
+Whether execution `a` and `b` are equal.
 
 #### Inherited from
 
@@ -521,96 +425,7 @@ ___
 
 #### Defined in
 
-[exectx/src/Execution.ts:223](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L223)
-
-___
-
-### nest
-
-▸ `Static` **nest**<`PV`, `V`, `T`\>(`options`): `T`
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `PV` | extends `object` |
-| `V` | extends `object` |
-| `T` | extends [`Context`](../wiki/exectx.Context)<`NestedContextValues`<`PV`, `V`\>, `T`\> = [`Context`](../wiki/exectx.Context)<`NestedContextValues`<`PV`, `V`\>\> |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `options` | `NestContextOptions`<`PV`, `V`, `T`\> |
-
-#### Returns
-
-`T`
-
-#### Overrides
-
-[Execution](../wiki/exectx.Execution).[nest](../wiki/exectx.Execution#nest-1)
-
-#### Defined in
-
-[exectx/src/Context.ts:116](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L116)
-
-▸ `Static` **nest**<`T`, `PT`\>(`options`): `T`
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | extends [`Execution`](../wiki/exectx.Execution)<`T`\> |
-| `PT` | extends [`Execution`](../wiki/exectx.Execution)<`PT`\> |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `options` | `NestExecutionOptions`<`T`, `PT`\> |
-
-#### Returns
-
-`T`
-
-#### Overrides
-
-Execution.nest
-
-#### Defined in
-
-[exectx/src/Context.ts:121](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L121)
-
-___
-
-### parseParentArg
-
-▸ `Static` **parseParentArg**<`T`\>(`arg`): `T`[]
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | extends [`Execution`](../wiki/exectx.Execution)<`T`\> |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `arg` | `ExecutionParentArg`<`T`\> \| `Falsey` |
-
-#### Returns
-
-`T`[]
-
-#### Inherited from
-
-[Execution](../wiki/exectx.Execution).[parseParentArg](../wiki/exectx.Execution#parseparentarg)
-
-#### Defined in
-
-[exectx/src/Execution.ts:211](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Execution.ts#L211)
+[exectx/src/Execution.ts:130](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L130)
 
 ___
 
@@ -618,16 +433,20 @@ ___
 
 ▸ `Static` **stringifyValues**(`values`): `string`
 
+Formats a string representation of context values.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `values` | `object` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `values` | `object` | Values to stringify. |
 
 #### Returns
 
 `string`
 
+Stringified version of the values.
+
 #### Defined in
 
-[exectx/src/Context.ts:176](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/Context.ts#L176)
+[exectx/src/Context.ts:166](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L166)

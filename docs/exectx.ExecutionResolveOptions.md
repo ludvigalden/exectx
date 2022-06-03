@@ -2,6 +2,8 @@
 
 [exectx](../wiki/exectx).ExecutionResolveOptions
 
+**`see`** [`executionResolve`](../wiki/exectx#executionresolve)
+
 ## Type parameters
 
 | Name | Type |
@@ -32,7 +34,7 @@
 
 ### defaultExecution
 
-• `Optional` **defaultExecution**: `E` \| () => `E`
+• `Optional` **defaultExecution**: `E` \| [`ExecutionGetter`](../wiki/exectx#executiongetter)<`E`\>
 
 If the function is called without a defined execution, a fallback execution is defaulted to.
 This defaults to a never-canceled execution, but can be overriden using this option.
@@ -40,7 +42,7 @@ As always, the execution is nested before being passed to the inner function.
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:149](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionResolve.ts#L149)
+[exectx/src/executionResolve.ts:180](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L180)
 
 ___
 
@@ -52,7 +54,7 @@ If canceled during the time the passed value is being resolved, the `onResolved`
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:139](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionResolve.ts#L139)
+[exectx/src/executionResolve.ts:164](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L164)
 
 ___
 
@@ -65,7 +67,7 @@ while the execution slot has a current not-canceled execution.
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:142](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionResolve.ts#L142)
+[exectx/src/executionResolve.ts:169](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L169)
 
 ___
 
@@ -78,7 +80,7 @@ will only be used to resolve the `getValue` function.
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:145](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionResolve.ts#L145)
+[exectx/src/executionResolve.ts:174](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L174)
 
 ___
 
@@ -90,7 +92,7 @@ The value to resolve.
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:123](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionResolve.ts#L123)
+[exectx/src/executionResolve.ts:140](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L140)
 
 ## Methods
 
@@ -113,7 +115,7 @@ Format the value after it has been resolved.
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:131](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionResolve.ts#L131)
+[exectx/src/executionResolve.ts:152](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L152)
 
 ___
 
@@ -136,7 +138,7 @@ the promise of the execution slot is resolved before calling the `getDefaultValu
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:129](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionResolve.ts#L129)
+[exectx/src/executionResolve.ts:150](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L150)
 
 ___
 
@@ -159,7 +161,7 @@ the promise of the execution slot is resolved before calling the `getValue` func
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:126](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionResolve.ts#L126)
+[exectx/src/executionResolve.ts:145](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L145)
 
 ___
 
@@ -183,7 +185,7 @@ The passed execution is in all cases canceled.
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:137](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionResolve.ts#L137)
+[exectx/src/executionResolve.ts:162](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L162)
 
 ___
 
@@ -207,4 +209,4 @@ If the passed value is not a promise, `onResolved` is called synchronously.
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:134](https://github.com/ludvigalden/exectx/blob/b8a37e3/packages/exectx/src/executionResolve.ts#L134)
+[exectx/src/executionResolve.ts:157](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L157)

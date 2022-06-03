@@ -2,6 +2,8 @@
 
 [exectx-axios](../wiki/exectx-axios).AxiosExecutionRequestConfig
 
+**`see`** [`axiosExecutionRequest`](../wiki/exectx-axios#axiosexecutionrequest)
+
 ## Type parameters
 
 | Name | Type |
@@ -26,6 +28,8 @@
 
 • `Optional` **execution**: [`Execution`](../wiki/exectx.Execution)
 
+The execution to attach to the request. When canceled, the request will also be canceled.
+
 #### Defined in
 
-exectx-axios/src/axiosExecutionRequest.ts:19
+exectx-axios/src/axiosExecutionRequest.ts:33
