@@ -1,11 +1,11 @@
 {
   "name": "exectx-react",
   "sideEffects": false,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "React utilities for cancelable contexts and executions",
   "license": "MIT",
   "dependencies": {
-    "exectx": "0.0.1",
+    "exectx": "0.1.0",
     "is-promise": "^4.0.0",
     "use-cleared-memo": "^1.4.1",
     "use-safe-force-update": "^2.0.0"

@@ -1,12 +1,12 @@
 {
   "name": "exectx-axios",
   "sideEffects": false,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Integration for `exectx` with `axios`",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.27.2",
-    "exectx": "0.0.1"
+    "exectx": "0.1.0"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.18.0"
