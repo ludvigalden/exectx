@@ -31,9 +31,8 @@
     "build": "preconstruct fix && preconstruct build && yarn build:readme",
     "build:readme": "jsdoc2md --plugin dmd-readable --files ./packages/*/src/**/*.ts --template ./README.hbs.md --configure ./jsdoc2md.json > ./README.md && yarn build:pkgreadme",
     "build:pkgreadme": "manypkg exec yarn build:readme",
-    "build:wiki": "typedoc",
-    "push:wiki": "git subtree push --prefix docs wiki master",
     "release": "yarn build && changeset publish",
+    "release:wiki": "typedoc && cd wiki && ls | grep -v .git | xargs rm && cp ../docs/* . && git add . && git commit -m \"wiki\" && git push && cd .. && rm -rf docs",
     "test": "jest",
     "clean": "manypkg exec rm -rf node_modules && manypkg exec rm -rf dist && rm -rf node_modules",
     "lint": "yarn eslint ."
@@ -87,7 +86,7 @@
     "typedoc-monorepo-link-types": "0.0.2",
     "typedoc-plugin-keyword": "1.0.2",
     "typedoc-plugin-markdown": "^3.12.1",
-    "typescript": "^4.7.2"
+    "typescript": "^4.7.3"
   },
   "husky": {
     "hooks": {

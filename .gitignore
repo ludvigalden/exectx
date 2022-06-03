@@ -1,4 +1,6 @@
 dist
+wiki
+docs
 compiled
 *.log
 coverage
