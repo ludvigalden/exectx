@@ -42,7 +42,7 @@ As always, the execution is nested before being passed to the inner function.
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:180](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L180)
+[exectx/src/executionResolve.ts:180](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionResolve.ts#L180)
 
 ___
 
@@ -54,7 +54,7 @@ If canceled during the time the passed value is being resolved, the `onResolved`
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:164](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L164)
+[exectx/src/executionResolve.ts:164](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionResolve.ts#L164)
 
 ___
 
@@ -67,7 +67,7 @@ while the execution slot has a current not-canceled execution.
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:169](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L169)
+[exectx/src/executionResolve.ts:169](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionResolve.ts#L169)
 
 ___
 
@@ -80,7 +80,7 @@ will only be used to resolve the `getValue` function.
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:174](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L174)
+[exectx/src/executionResolve.ts:174](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionResolve.ts#L174)
 
 ___
 
@@ -92,7 +92,7 @@ The value to resolve.
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:140](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L140)
+[exectx/src/executionResolve.ts:140](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionResolve.ts#L140)
 
 ## Methods
 
@@ -115,7 +115,7 @@ Format the value after it has been resolved.
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:152](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L152)
+[exectx/src/executionResolve.ts:152](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionResolve.ts#L152)
 
 ___
 
@@ -138,7 +138,7 @@ the promise of the execution slot is resolved before calling the `getDefaultValu
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:150](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L150)
+[exectx/src/executionResolve.ts:150](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionResolve.ts#L150)
 
 ___
 
@@ -161,7 +161,7 @@ the promise of the execution slot is resolved before calling the `getValue` func
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:145](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L145)
+[exectx/src/executionResolve.ts:145](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionResolve.ts#L145)
 
 ___
 
@@ -185,7 +185,7 @@ The passed execution is in all cases canceled.
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:162](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L162)
+[exectx/src/executionResolve.ts:162](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionResolve.ts#L162)
 
 ___
 
@@ -209,4 +209,4 @@ If the passed value is not a promise, `onResolved` is called synchronously.
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:157](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L157)
+[exectx/src/executionResolve.ts:157](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionResolve.ts#L157)

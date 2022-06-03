@@ -31,7 +31,7 @@ defined for internal use by [`executionFunc`](../wiki/exectx#executionfunc).
 
 #### Defined in
 
-[exectx/src/executionFunc.ts:182](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionFunc.ts#L182)
+[exectx/src/executionFunc.ts:182](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionFunc.ts#L182)
 
 ## Table of contents
 
@@ -52,7 +52,7 @@ Whether most recently used execution was defaulted to.
 
 #### Defined in
 
-[exectx/src/executionFunc.ts:187](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionFunc.ts#L187)
+[exectx/src/executionFunc.ts:187](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionFunc.ts#L187)
 
 ___
 
@@ -64,7 +64,7 @@ The most recently used params.
 
 #### Defined in
 
-[exectx/src/executionFunc.ts:189](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionFunc.ts#L189)
+[exectx/src/executionFunc.ts:189](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionFunc.ts#L189)
 
 ___
 
@@ -76,7 +76,7 @@ The most recently returned value.
 
 #### Defined in
 
-[exectx/src/executionFunc.ts:191](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionFunc.ts#L191)
+[exectx/src/executionFunc.ts:191](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionFunc.ts#L191)
 
 ___
 
@@ -88,4 +88,4 @@ The most recently used execution.
 
 #### Defined in
 
-[exectx/src/executionFunc.ts:185](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionFunc.ts#L185)
+[exectx/src/executionFunc.ts:185](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionFunc.ts#L185)

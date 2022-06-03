@@ -1,3 +1,5 @@
 # Contributing
 
-Please specify clear descriptions in pull requests and make sure to use linting.
+## Setup
+
+- `git remote add wiki https://github.com/ludvigalden/exectx.wiki.git`

@@ -68,7 +68,7 @@ pending execution in the slot when a new execution is set, the previous executio
 
 #### Defined in
 
-[exectx/src/ExecutionSlot.ts:18](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/ExecutionSlot.ts#L18)
+[exectx/src/ExecutionSlot.ts:18](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/ExecutionSlot.ts#L18)
 
 ## Accessors
 
@@ -88,7 +88,7 @@ Execution.canceled
 
 #### Defined in
 
-[exectx/src/ExecutionSlot.ts:140](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/ExecutionSlot.ts#L140)
+[exectx/src/ExecutionSlot.ts:140](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/ExecutionSlot.ts#L140)
 
 ___
 
@@ -106,7 +106,7 @@ The current execution of the execution slot.
 
 #### Defined in
 
-[exectx/src/ExecutionSlot.ts:133](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/ExecutionSlot.ts#L133)
+[exectx/src/ExecutionSlot.ts:133](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/ExecutionSlot.ts#L133)
 
 ___
 
@@ -128,7 +128,7 @@ Execution.promiseCanceled
 
 #### Defined in
 
-[exectx/src/ExecutionSlot.ts:149](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/ExecutionSlot.ts#L149)
+[exectx/src/ExecutionSlot.ts:149](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/ExecutionSlot.ts#L149)
 
 ## Methods
 
@@ -148,7 +148,7 @@ If defined, cancels the current execution, and removes it from the execution slo
 
 #### Defined in
 
-[exectx/src/ExecutionSlot.ts:108](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/ExecutionSlot.ts#L108)
+[exectx/src/ExecutionSlot.ts:108](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/ExecutionSlot.ts#L108)
 
 ___
 
@@ -171,7 +171,7 @@ Its state does not affect the state of its parent.
 
 #### Defined in
 
-[exectx/src/Execution.ts:33](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L33)
+[exectx/src/Execution.ts:33](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Execution.ts#L33)
 
 ___
 
@@ -199,7 +199,7 @@ Unsubscriber for the listener.
 
 #### Defined in
 
-[exectx/src/ExecutionSlot.ts:24](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/ExecutionSlot.ts#L24)
+[exectx/src/ExecutionSlot.ts:24](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/ExecutionSlot.ts#L24)
 
 ___
 
@@ -225,7 +225,7 @@ The set execution.
 
 #### Defined in
 
-[exectx/src/ExecutionSlot.ts:72](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/ExecutionSlot.ts#L72)
+[exectx/src/ExecutionSlot.ts:72](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/ExecutionSlot.ts#L72)
 
 ___
 
@@ -254,4 +254,4 @@ Whether execution `a` and `b` are equal.
 
 #### Defined in
 
-[exectx/src/Execution.ts:130](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L130)
+[exectx/src/Execution.ts:130](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Execution.ts#L130)

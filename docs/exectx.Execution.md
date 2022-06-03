@@ -53,7 +53,7 @@ Additional methods and properties for efficient usage of the `canceled` property
 
 #### Defined in
 
-[exectx/src/Execution.ts:21](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L21)
+[exectx/src/Execution.ts:21](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Execution.ts#L21)
 
 ## Accessors
 
@@ -73,7 +73,7 @@ Whether the execution has been canceled.
 
 #### Defined in
 
-[exectx/src/Execution.ts:120](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L120)
+[exectx/src/Execution.ts:120](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Execution.ts#L120)
 
 ___
 
@@ -89,7 +89,7 @@ A promise that resolves whenever the execution is canceled, or if the execution 
 
 #### Defined in
 
-[exectx/src/Execution.ts:105](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L105)
+[exectx/src/Execution.ts:105](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Execution.ts#L105)
 
 ## Methods
 
@@ -106,7 +106,7 @@ Should only be used if the execution was constructed by you, or if you know what
 
 #### Defined in
 
-[exectx/src/Execution.ts:41](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L41)
+[exectx/src/Execution.ts:41](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Execution.ts#L41)
 
 ___
 
@@ -125,7 +125,7 @@ Its state does not affect the state of its parent.
 
 #### Defined in
 
-[exectx/src/Execution.ts:33](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L33)
+[exectx/src/Execution.ts:33](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Execution.ts#L33)
 
 ___
 
@@ -149,7 +149,7 @@ Unsubscriber for the listener.
 
 #### Defined in
 
-[exectx/src/Execution.ts:63](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L63)
+[exectx/src/Execution.ts:63](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Execution.ts#L63)
 
 ___
 
@@ -174,4 +174,4 @@ Whether execution `a` and `b` are equal.
 
 #### Defined in
 
-[exectx/src/Execution.ts:130](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L130)
+[exectx/src/Execution.ts:130](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Execution.ts#L130)

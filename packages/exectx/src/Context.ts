@@ -1,12 +1,25 @@
-import { Execution, ExecutionParentArg, NestExecutionOptions } from './Execution';
+import { Execution } from './Execution';
+import { ContextParentArg, NestedContextValues, nestContext } from './nestContext';
+import { nestExecution } from './nestExecution';
+import { parseExecutionsArg } from './parseExecutionsArg';
 
-/** An execution that allows storing values and inheriting values and cancellation from parent contexts or executions. */
+/**
+ * An {@linkcode Execution} that allows for storing values and inheriting values and cancellation state
+ * from parent contexts and/or executions.
+ *
+ * @param {object} values - Values that are specific to the context.
+ * @param {ContextParentArg} parent - Parent(s) to inherit values and/or cancellation state from.
+ * @class Context
+ * @augments Execution
+ * @typicalname context
+ * @classdesc A cancelable that holds mutable values and can inherit from other contexts and executions.
+ */
 export class Context<V extends object = any> extends Execution {
   private _values?: V;
   private _parents?: Context[];
 
   constructor(values?: V, parent?: ContextParentArg<V>) {
-    const parents = Context.parseParentArg(parent);
+    const parents = parseExecutionsArg(parent);
 
     super(parents);
 
@@ -16,20 +29,38 @@ export class Context<V extends object = any> extends Execution {
       enumerable: false,
     });
 
-    Context.nest({ parent: parents, child: this, skipNestExecution: true });
+    nestContext({ parent: parents, child: this, skipNestExecution: true });
   }
 
-  set<K extends keyof V>(key: K, value: V[K]): this {
+  /**
+   * Sets a value of the context. It will override any value with the same key of any parent context.
+   *
+   * @param {?} key - The key of the value to set.
+   * @param {?} value - The value to set to the key.
+   */
+  set<K extends keyof V>(key: K, value: V[K]): void {
     this._values[key] = value;
-
-    return this;
   }
 
+  /**
+   * @param {?} key - The key of the value to delete. When deleted, the value will be inherited from any parent(s).
+   * @description Deletes a value of the context.
+   */
+  delete<K extends keyof V>(key: K): void {
+    delete this._values[key];
+  }
+
+  /**
+   * @param {?} key - The key of the value to retrieve.
+   * @returns {?} The value defined in the context or in any of its parent contexts.
+   * @description Retrieves a value of the context.
+   */
   get<K extends keyof V>(key: K): V[K] {
     if (this.strictHas(key)) {
       return this._values[key];
     } else if (this._parents) {
       const foundParent = this._parents.find(parent => parent.has(key));
+
       if (foundParent) {
         return foundParent.get(key);
       }
@@ -38,36 +69,12 @@ export class Context<V extends object = any> extends Execution {
     return undefined;
   }
 
-  has<K extends keyof V>(key: K): boolean {
-    return (
-      this.strictHas(key) || !!(this._parents && this._parents.find(parent => parent.has(key)))
-    );
-  }
-
-  /** Returns a child context that inherits the cancellation state and values of this context (as well as any additional parents specified). */
-  nest(values?: Partial<V>, ...otherParents: ContextParent<V>[]): Context<V>;
-  nest<CV extends object>(
-    values?: CV,
-    ...otherParents: ContextParent<CV>[]
-  ): Context<NestedContextValues<V, CV>>;
-  nest<CV extends object>(
-    values?: CV,
-    ...otherParents: ContextParent<CV>[]
-  ): Context<NestedContextValues<V, CV>> {
-    return Context.nest<V, CV, Context<NestedContextValues<V, CV>>>({
-      parent: this,
-      otherParents,
-      values,
-      contextConstructor: Context,
-    });
-  }
-
-  nestExecution() {
-    return Execution.nest({ parent: this });
-  }
-
-  /** Returns all the values of a specific key among this instance and its parents, where it is defined. */
-  protected getAll<K extends keyof V>(key: K): V[K][] {
+  /**
+   * @param {?} key - The key of the value to retrieve.
+   * @returns {Array<?>} The values of a specific key among this instance and its parents, wherever it is found to be defined.
+   * @description Retrieves values defined in the context and in any of its parents.
+   */
+  getAll<K extends keyof V>(key: K): V[K][] {
     const properties: V[K][] = [];
 
     if (this.strictHas(key)) {
@@ -83,12 +90,66 @@ export class Context<V extends object = any> extends Execution {
     return properties;
   }
 
+  /**
+   * @param {?} key - The key of the value to check whether it is defined.
+   * @returns {boolean} Whether a value is defined in the context or in any of its parent contexts.
+   * @description Whether a value is defined in the context or in any of its parent contexts.
+   */
+  has<K extends keyof V>(key: K): boolean {
+    return (
+      this.strictHas(key) || !!(this._parents && this._parents.find(parent => parent.has(key)))
+    );
+  }
+
+  /**
+   * @param {object} values - Values to attach to the nested context.
+   * @returns {Context} A child context that inherits the cancellation state and values of this context
+   * (as well as any additional parents specified.)
+   * @description Nests the context.
+   */
+  nest(values?: Partial<V>): Context<V>;
+  /**
+   * @param {object} values - Values to attach to the nested context.
+   * @returns {Context} A child context that inherits the cancellation state and values of this context
+   * (as well as any additional parents specified.)
+   * @description Nests the context.
+   */
+  nest<CV extends object>(values?: CV): Context<NestedContextValues<V, CV>>;
+  nest<CV extends object>(values?: CV): Context<NestedContextValues<V, CV>> {
+    return nestContext<V, CV, Context<NestedContextValues<V, CV>>>({
+      parent: this,
+      values,
+    });
+  }
+
+  /**
+   * Nests the context to a execution that inherits the cancellation state of the context.
+   *
+   * @returns {Execution} A child execution context that will be canceled whenever its parent is canceled, or when it is canceled itself.
+   * Its state does not affect the state of its parent.
+   */
+  nestExecution(): Execution {
+    return nestExecution({ parent: this });
+  }
+
+  /**
+   * @param {?} key - The key to check whether it is defined in this context instance.
+   * @returns {boolean} Whether a value with the specified key is defined in this context instance.
+   * @description Checks whether a key is defined in this context instance.
+   * @protected
+   */
   protected strictHas<K extends keyof V>(key: K): boolean {
     return this._values.hasOwnProperty(key);
   }
 
-  protected toString() {
+  /**
+   * @returns {string} A string representation of the context, which contains the stringified values
+   * and a key that identifies the execution in the global execution context.
+   * @protected
+   */
+  protected toString(): string {
     const valuesString = Context.stringifyValues(this._values);
+
     if (!valuesString) {
       return 'Context(' + this['_key'] + ')';
     }
@@ -96,64 +157,12 @@ export class Context<V extends object = any> extends Execution {
     return 'Context(' + this['_key'] + ', ' + valuesString + ')';
   }
 
-  static nest<
-    PV extends object,
-    V extends object,
-    T extends Context<NestedContextValues<PV, V>> = Context<NestedContextValues<PV, V>>,
-  >(options: NestContextOptions<PV, V, T>): T;
-  static nest<T extends Execution, PT extends Execution>(options: NestExecutionOptions<T, PT>): T;
-  static nest<
-    PV extends object,
-    V extends object,
-    T extends Context<NestedContextValues<PV, V>> = Context<NestedContextValues<PV, V>>,
-  >(options: NestContextOptions<PV, V, T>): T {
-    const parents = Execution.parseParentArg(options.parent);
-    if (options.otherParents) {
-      parents.push(
-        ...Execution.parseParentArg(options.otherParents.flat(1) as Context<Partial<V>>[]),
-      );
-    }
-
-    if (!parents.length) {
-      if (options.child) {
-        return options.child;
-      } else if (options.contextConstructor) {
-        return new options.contextConstructor(options.values as V) as T;
-      } else {
-        return new Context(options.values as V) as T;
-      }
-    } else if (options.child) {
-      if (!options.skipNestExecution) {
-        Execution.nest({
-          parent: parents,
-          child: options.child,
-        });
-      }
-
-      // child inherits values from parent contexts
-      const parentContexts = parents.filter(parent => parent instanceof Context) as Context<
-        Partial<V>
-      >[];
-      if (parentContexts.length) {
-        if (!options.child['_parents']) {
-          Object.defineProperty(options.child, '_parents', {
-            value: parentContexts,
-            writable: false,
-            enumerable: false,
-          });
-        } else {
-          options.child['_parents'].push(...parentContexts);
-        }
-      }
-
-      return options.child;
-    } else if (options.contextConstructor) {
-      return new options.contextConstructor(options.values as any, parents) as T;
-    } else {
-      return new Context(options.values as any, parents) as T;
-    }
-  }
-
+  /**
+   * Formats a string representation of context values.
+   *
+   * @param {object} values - Values to stringify.
+   * @returns {string} Stringified version of the values.
+   */
   static stringifyValues(values: object): string {
     if (!values) {
       return '';
@@ -162,38 +171,3 @@ export class Context<V extends object = any> extends Execution {
     return JSON.stringify(values);
   }
 }
-
-export interface NestContextOptions<
-  PV extends object = any,
-  V extends object = PV,
-  T extends Context<NestedContextValues<PV, V>> = Context<NestedContextValues<PV, V>>,
-> extends NestExecutionOptions<T, ContextParent<V>> {
-  parent?: ContextParentArg<V>;
-  otherParents?: ContextParentArg<V>[];
-  values?: V;
-  child?: T;
-  contextConstructor?: ContextClass<V>;
-  skipNestExecution?: boolean;
-}
-
-export type ContextParent<V extends object> = Context<V> | Context<Partial<V>> | Execution;
-
-export type NestedContextValues<PV extends object = any, V extends object = PV> = V & PV;
-// export type NestedContextValues<PV extends object = any, V extends object = PV> = V & (PV extends V ? Omit<PV, keyof V> : PV);
-
-/**
- * Specifies the type for the `parent` argument when constructing a context.
- *
- * Because of issues with type inference, the context parent can be any type of context
- * (with types of values that possibly does not match the types of values of the constructed child).
- * This may be fixed in the future, which is why the `V` generic should be specified, declaring the
- * type of values of the child context.
- */
-export type ContextParentArg<V extends object> = ExecutionParentArg<ContextParent<V>>;
-
-export type Class<T = any, A extends any[] = any[]> = new (...arguments_: A) => T;
-
-export type ContextClass<V extends object = any, T extends Context<V> = Context<V>> = new (
-  values?: V,
-  parent?: ContextParentArg<V>,
-) => T;

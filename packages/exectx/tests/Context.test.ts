@@ -1,5 +1,4 @@
-import { Context, ContextParent, NestedContextValues } from '../src/Context';
-import { Execution } from '../src/Execution';
+import { Context, ContextParent, Execution, NestedContextValues, nestContext } from '../src';
 
 describe('Context', () => {
   describe('constructs correctly', () => {
@@ -63,11 +62,11 @@ describe('Context', () => {
         values?: CV,
         ...otherParents: ContextParent<CV>[]
       ): Location<NestedContextValues<V, CV>> {
-        return Context.nest<V, CV, Location<NestedContextValues<V, CV>>>({
+        return nestContext<V, CV, Location<NestedContextValues<V, CV>>>({
           parent: this,
           otherParents,
           values,
-          contextConstructor: Location as any,
+          customConstructor: Location as any,
         });
       }
 
@@ -81,11 +80,11 @@ describe('Context', () => {
         values?: Partial<DeepLocationValues>,
         ...otherParents: ContextParent<DeepLocationValues>[]
       ): DeepLocation {
-        return Context.nest<DeepLocationValues, Partial<DeepLocationValues>, DeepLocation>({
+        return nestContext<DeepLocationValues, Partial<DeepLocationValues>, DeepLocation>({
           parent: this,
           otherParents,
           values,
-          contextConstructor: DeepLocation as any,
+          customConstructor: DeepLocation as any,
         });
       }
 
@@ -114,13 +113,17 @@ describe('Context', () => {
       });
 
       test('can add parent using prototype.nest()', () => {
-        const counterContext = new Location({ pathname: '/exectx/cool', query: '?cool' });
+        const counterContext = new Location<LocationValues>({
+          pathname: '/exectx/cool',
+          query: '?cool',
+        });
+
         const childContext = context.nest({ index: 1 });
 
         expect(childContext.pathname).toBe('/exectx');
         expect(childContext.index).toBe(1);
 
-        Context.nest({
+        nestContext({
           child: childContext,
           parent: counterContext,
         });

@@ -1,0 +1,20 @@
+module.exports = {
+  name: 'exectx',
+  includeVersion: true,
+  theme: 'github-wiki',
+  entryPointStrategy: 'packages',
+  entryPoints: ['./packages/*'],
+  exclude: ['*.test.ts', '*.d.ts', '*.js', '*.cjs.js'],
+  excludeExternals: true,
+  excludeProtected: true,
+  excludePrivate: true,
+  excludeInternal: true,
+  pretty: true,
+  hideGenerator: true,
+  out: 'docs',
+  validation: {
+    invalidLink: true,
+    notExported: true,
+    notDocumented: true,
+  },
+};

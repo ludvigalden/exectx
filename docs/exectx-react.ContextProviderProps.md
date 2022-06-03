@@ -55,7 +55,7 @@ Omit.customConstructor
 
 #### Defined in
 
-exectx/src/nestContext.ts:84
+exectx/dist/declarations/src/nestContext.d.ts:25
 
 ___
 
@@ -85,7 +85,7 @@ Omit.otherParents
 
 #### Defined in
 
-exectx/src/nestContext.ts:78
+exectx/dist/declarations/src/nestContext.d.ts:19
 
 ___
 
@@ -101,7 +101,7 @@ Omit.skipNestExecution
 
 #### Defined in
 
-exectx/src/nestContext.ts:86
+exectx/dist/declarations/src/nestContext.d.ts:27
 
 ___
 
@@ -117,4 +117,4 @@ Omit.values
 
 #### Defined in
 
-exectx/src/nestContext.ts:80
+exectx/dist/declarations/src/nestContext.d.ts:21

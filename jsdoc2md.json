@@ -1,0 +1,18 @@
+{
+  "source": {
+    "includePattern": ".+\\.ts(doc|x)?$",
+    "excludePattern": ".+\\.(test|spec).ts"
+  },
+  "plugins": ["plugins/markdown", "node_modules/jsdoc-babel"],
+  "babel": {
+    "extensions": ["ts", "tsx"],
+    "ignore": ["**/*.(test|spec).ts"],
+    "presets": [["@babel/preset-react", { "runtime": "automatic" }], "@babel/preset-typescript"],
+    "plugins": ["@babel/plugin-transform-runtime"],
+    "babelrc": false
+  },
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": true
+  }
+}

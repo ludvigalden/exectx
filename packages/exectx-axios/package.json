@@ -1,11 +1,12 @@
 {
-  "name": "exectx",
+  "name": "exectx-axios",
   "sideEffects": false,
   "version": "0.0.1",
-  "description": "Cancelable contexts and executions",
+  "description": "Integration for `exectx` with `axios`",
   "license": "MIT",
   "dependencies": {
-    "is-promise": "^4.0.0"
+    "axios": "^0.27.2",
+    "exectx": "0.0.1"
   },
   "peerDependencies": {
     "@babel/runtime": "^7.18.0"
@@ -24,27 +25,31 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ludvigalden/exectx.git",
-    "directory": "packages/exectx"
+    "directory": "packages/exectx-axios"
   },
   "keywords": [
+    "axios",
     "execution",
     "context",
     "cancelable",
     "promise"
   ],
   "typedocMain": "src/index.ts",
-  "main": "dist/exectx.cjs.js",
-  "umd:main": "dist/exectx.umd.min.js",
-  "types": "dist/exectx.cjs.d.ts",
-  "module": "dist/exectx.esm.js",
+  "main": "dist/exectx-axios.cjs.js",
+  "umd:main": "dist/exectx-axios.umd.min.js",
+  "types": "dist/exectx-axios.cjs.d.ts",
+  "module": "dist/exectx-axios.esm.js",
   "files": [
     "dist"
   ],
   "preconstruct": {
+    "globals": {
+      "exectx": "exectx"
+    },
     "entrypoints": [
       "index.ts"
     ],
-    "umdName": "exectx"
+    "umdName": "exectx-axios"
   },
   "scripts": {
     "build:readme": "jsdoc2md --files ./src/**/*.ts --template ./README.hbs.md --configure ../../jsdoc2md.json > ./README.md"

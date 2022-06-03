@@ -1,17 +1,22 @@
 {
-  "name": "exectx",
+  "name": "exectx-react",
   "sideEffects": false,
   "version": "0.0.1",
-  "description": "Cancelable contexts and executions",
+  "description": "React utilities for cancelable contexts and executions",
   "license": "MIT",
   "dependencies": {
-    "is-promise": "^4.0.0"
+    "exectx": "0.0.1",
+    "is-promise": "^4.0.0",
+    "use-cleared-memo": "^1.4.1",
+    "use-safe-force-update": "^2.0.0"
   },
   "peerDependencies": {
-    "@babel/runtime": "^7.18.0"
+    "@babel/runtime": "^7.18.0",
+    "react": ">=16.8.0"
   },
   "devDependencies": {
-    "@babel/runtime": "^7.18.3"
+    "@babel/runtime": "^7.18.3",
+    "react": "^18.1.0"
   },
   "author": {
     "name": "Ludvig Aldén",
@@ -24,27 +29,32 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ludvigalden/exectx.git",
-    "directory": "packages/exectx"
+    "directory": "packages/exectx-react"
   },
   "keywords": [
+    "react",
+    "hooks",
     "execution",
     "context",
     "cancelable",
     "promise"
   ],
   "typedocMain": "src/index.ts",
-  "main": "dist/exectx.cjs.js",
-  "umd:main": "dist/exectx.umd.min.js",
-  "types": "dist/exectx.cjs.d.ts",
-  "module": "dist/exectx.esm.js",
+  "main": "dist/exectx-react.cjs.js",
+  "umd:main": "dist/exectx-react.umd.min.js",
+  "module": "dist/exectx-react.esm.js",
+  "types": "dist/declarations/index.d.ts",
   "files": [
     "dist"
   ],
   "preconstruct": {
+    "globals": {
+      "exectx": "exectx"
+    },
     "entrypoints": [
       "index.ts"
     ],
-    "umdName": "exectx"
+    "umdName": "exectx-react"
   },
   "scripts": {
     "build:readme": "jsdoc2md --files ./src/**/*.ts --template ./README.hbs.md --configure ../../jsdoc2md.json > ./README.md"

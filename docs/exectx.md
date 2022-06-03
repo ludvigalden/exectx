@@ -77,7 +77,7 @@ Whether the arguments are equal.
 
 #### Defined in
 
-[exectx/src/executionFunc.ts:240](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionFunc.ts#L240)
+[exectx/src/executionFunc.ts:240](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionFunc.ts#L240)
 
 ___
 
@@ -168,7 +168,7 @@ Listener for when an execution is canceled.
 
 #### Defined in
 
-[exectx/src/Execution.ts:155](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L155)
+[exectx/src/Execution.ts:155](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Execution.ts#L155)
 
 ___
 
@@ -190,7 +190,7 @@ Whether the listener was unsubscribed (not having previously been unsubscribed.)
 
 #### Defined in
 
-[exectx/src/Execution.ts:162](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L162)
+[exectx/src/Execution.ts:162](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Execution.ts#L162)
 
 ___
 
@@ -254,7 +254,7 @@ Whether the executions are equal.
 
 #### Defined in
 
-[exectx/src/executionFunc.ts:230](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionFunc.ts#L230)
+[exectx/src/executionFunc.ts:230](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionFunc.ts#L230)
 
 ___
 
@@ -280,7 +280,7 @@ Function that returns an execution.
 
 #### Defined in
 
-[exectx/src/executionFunc.ts:221](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionFunc.ts#L221)
+[exectx/src/executionFunc.ts:221](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionFunc.ts#L221)
 
 ___
 
@@ -332,7 +332,7 @@ Function that receives the passed parameters and an execution as the final param
 
 #### Defined in
 
-[exectx/src/executionFunc.ts:173](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionFunc.ts#L173)
+[exectx/src/executionFunc.ts:173](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionFunc.ts#L173)
 
 ___
 
@@ -364,7 +364,7 @@ Removes the opportunity to cancel the execution.
 
 #### Defined in
 
-[exectx/src/Execution.ts:150](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L150)
+[exectx/src/Execution.ts:150](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Execution.ts#L150)
 
 ___
 
@@ -482,7 +482,7 @@ The transformed execution func, which accepts an execution as the final optional
 
 #### Defined in
 
-[exectx/src/executionFunc.ts:15](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionFunc.ts#L15)
+[exectx/src/executionFunc.ts:15](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionFunc.ts#L15)
 
 ___
 
@@ -518,7 +518,7 @@ The resolved value, or undefined if the execution was canceled while resolving t
 
 #### Defined in
 
-[exectx/src/executionResolve.ts:18](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionResolve.ts#L18)
+[exectx/src/executionResolve.ts:18](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionResolve.ts#L18)
 
 ___
 

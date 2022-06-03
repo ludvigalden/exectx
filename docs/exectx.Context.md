@@ -77,7 +77,7 @@ from parent contexts and/or executions.
 
 #### Defined in
 
-[exectx/src/Context.ts:21](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L21)
+[exectx/src/Context.ts:21](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Context.ts#L21)
 
 ## Accessors
 
@@ -101,7 +101,7 @@ Execution.canceled
 
 #### Defined in
 
-[exectx/src/Execution.ts:120](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L120)
+[exectx/src/Execution.ts:120](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Execution.ts#L120)
 
 ___
 
@@ -121,7 +121,7 @@ Execution.promiseCanceled
 
 #### Defined in
 
-[exectx/src/Execution.ts:105](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L105)
+[exectx/src/Execution.ts:105](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Execution.ts#L105)
 
 ## Methods
 
@@ -142,7 +142,7 @@ Should only be used if the execution was constructed by you, or if you know what
 
 #### Defined in
 
-[exectx/src/Execution.ts:41](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L41)
+[exectx/src/Execution.ts:41](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Execution.ts#L41)
 
 ___
 
@@ -170,7 +170,7 @@ ___
 
 #### Defined in
 
-[exectx/src/Context.ts:49](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L49)
+[exectx/src/Context.ts:49](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Context.ts#L49)
 
 ___
 
@@ -200,7 +200,7 @@ The value defined in the context or in any of its parent contexts.
 
 #### Defined in
 
-[exectx/src/Context.ts:58](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L58)
+[exectx/src/Context.ts:58](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Context.ts#L58)
 
 ___
 
@@ -230,7 +230,7 @@ The values of a specific key among this instance and its parents, wherever it is
 
 #### Defined in
 
-[exectx/src/Context.ts:77](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L77)
+[exectx/src/Context.ts:77](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Context.ts#L77)
 
 ___
 
@@ -260,7 +260,7 @@ Whether a value is defined in the context or in any of its parent contexts.
 
 #### Defined in
 
-[exectx/src/Context.ts:98](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L98)
+[exectx/src/Context.ts:98](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Context.ts#L98)
 
 ___
 
@@ -289,7 +289,7 @@ A child context that inherits the cancellation state and values of this context
 
 #### Defined in
 
-[exectx/src/Context.ts:110](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L110)
+[exectx/src/Context.ts:110](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Context.ts#L110)
 
 ▸ **nest**<`CV`\>(`values?`): [`Context`](../wiki/exectx.Context)<[`NestedContextValues`](../wiki/exectx#nestedcontextvalues)<`V`, `CV`\>\>
 
@@ -320,7 +320,7 @@ Execution.nest
 
 #### Defined in
 
-[exectx/src/Context.ts:117](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L117)
+[exectx/src/Context.ts:117](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Context.ts#L117)
 
 ___
 
@@ -339,7 +339,7 @@ Its state does not affect the state of its parent.
 
 #### Defined in
 
-[exectx/src/Context.ts:131](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L131)
+[exectx/src/Context.ts:131](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Context.ts#L131)
 
 ___
 
@@ -367,7 +367,7 @@ Unsubscriber for the listener.
 
 #### Defined in
 
-[exectx/src/Execution.ts:63](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L63)
+[exectx/src/Execution.ts:63](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Execution.ts#L63)
 
 ___
 
@@ -396,7 +396,7 @@ Sets a value of the context. It will override any value with the same key of any
 
 #### Defined in
 
-[exectx/src/Context.ts:41](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L41)
+[exectx/src/Context.ts:41](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Context.ts#L41)
 
 ___
 
@@ -425,7 +425,7 @@ Whether execution `a` and `b` are equal.
 
 #### Defined in
 
-[exectx/src/Execution.ts:130](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Execution.ts#L130)
+[exectx/src/Execution.ts:130](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Execution.ts#L130)
 
 ___
 
@@ -449,4 +449,4 @@ Stringified version of the values.
 
 #### Defined in
 
-[exectx/src/Context.ts:166](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/Context.ts#L166)
+[exectx/src/Context.ts:166](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/Context.ts#L166)

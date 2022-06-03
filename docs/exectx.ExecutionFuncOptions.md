@@ -31,7 +31,7 @@ As always, the execution is nested before being passed to the inner function.
 
 #### Defined in
 
-[exectx/src/executionFunc.ts:215](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionFunc.ts#L215)
+[exectx/src/executionFunc.ts:215](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionFunc.ts#L215)
 
 ___
 
@@ -47,7 +47,7 @@ If set `true`, all parameters are deemed equal, and only the execution will be v
 
 #### Defined in
 
-[exectx/src/executionFunc.ts:205](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionFunc.ts#L205)
+[exectx/src/executionFunc.ts:205](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionFunc.ts#L205)
 
 ___
 
@@ -59,4 +59,4 @@ Determines whether two executions are equal. If set `true`, all executions are d
 
 #### Defined in
 
-[exectx/src/executionFunc.ts:209](https://github.com/ludvigalden/exectx/blob/a0361f0/packages/exectx/src/executionFunc.ts#L209)
+[exectx/src/executionFunc.ts:209](https://github.com/ludvigalden/exectx/blob/5c34d65/packages/exectx/src/executionFunc.ts#L209)
