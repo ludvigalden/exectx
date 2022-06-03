@@ -1,6 +1,6 @@
 module.exports = {
   name: 'exectx',
-  includeVersion: true,
+  includeVersion: false,
   theme: 'github-wiki',
   entryPointStrategy: 'packages',
   entryPoints: ['./packages/*'],
