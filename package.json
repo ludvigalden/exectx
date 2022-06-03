@@ -2,7 +2,7 @@
   "name": "exectx-monorepo",
   "description": "Cancelable contexts and executions",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "workspaces": [
     "./packages/*"
   ],
@@ -31,7 +31,7 @@
     "build": "preconstruct fix && preconstruct build && yarn build:readme",
     "build:readme": "jsdoc2md --plugin dmd-readable --files ./packages/*/src/**/*.ts --template ./README.hbs.md --configure ./jsdoc2md.json > ./README.md && yarn build:pkgreadme",
     "build:pkgreadme": "manypkg exec yarn build:readme",
-    "release": "yarn build && changeset publish",
+    "release": "yarn build && changeset publish && release:wiki",
     "release:wiki": "typedoc && cd wiki && ls | grep -v .git | xargs rm && cp ../docs/* . && git add . && git commit -m \"wiki\" && git push && cd .. && rm -rf docs",
     "test": "jest",
     "clean": "manypkg exec rm -rf node_modules && manypkg exec rm -rf dist && rm -rf node_modules",
